@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/style.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <%-include('./partials/menu.ejs')%>
+            <div id="new_product">
+                <h2>Editar Produto</h2>
+
+                <%if(result){%>
+                    <form method="post" action="/edit/<%=result.id%>" id="new_product_form">
+                        <label for="name">Nome do produto
+                            <input type="text" name="name" required value="<%=result.name%>"  autocomplete="off">
+                        </label><br>
+                        <label for="brand">Marca
+                            <input type="text" name="brand" required value="<%=result.brand%>"  autocomplete="off">
+                        </label><br>
+                        <label for="refCode">Cód. de referência
+                            <input type="text" name="refCode" required value="<%=result.refCode%>" autocomplete="off">
+                        </label><br>
+                        <label for="description">Descrição
+                            <input type="text" name="description" value="<%=result.description%>" autocomplete="off">
+                        </label><br>
+                        <label for="amount">Quantidade
+                            <input type="number" name="amount" required value="<%=result.amount%>" autocomplete="off">
+                        </label> <br>
+                        <label for="price">Preço
+                            <input type="number" name="price" required value="<%=result.price%>" autocomplete="off">
+                        </label><br>
+                        <label for="sellPrice">Preço de venda
+                            <input type="number" name="sellPrice" value="<%=result.sellPrice%>" autocomplete="off">
+                        </label><br>
+                        <button>Editar</button>
+
+                        <h3>Produto alterado com sucesso!</h3>
+                    </form>
+                    <%}else {%>
+                        <form method="post" action="/edit/<%=body.id%>" id="new_product_form">
+                            <label for="name">Nome do produto
+                                <input type="text" name="name" required value="<%=body.name%>" autocomplete="off">
+                            </label><br>
+                            <label for="brand">Marca
+                                <input type="text" name="brand" required value="<%=body.brand%>" autocomplete="off">
+                            </label><br>
+                            <label for="refCode">Cód. de referência
+                                <input type="text" name="refCode" required value="<%=body.refCode%>" autocomplete="off">
+                            </label><br>
+                            <label for="description">Descrição
+                                <input type="text" name="description" value="<%=body.description%>" autocomplete="off">
+                            </label><br>
+                            <label for="amount">Quantidade
+                                <input type="number" name="amount" required value="<%=body.amount%>" autocomplete="off">
+                            </label> <br>
+                            <label for="price">Preço
+                                <input type="number" name="price" required value="<%=body.price%>" autocomplete="off">
+                            </label><br>
+                            <label for="sellPrice">Preço de venda
+                                <input type="number" name="sellPrice" value="<%=body.sellPrice%>" autocomplete="off">
+                            </label><br>
+                            <button>Editar</button>
+                        </form>
+                        <%}%>
+
+
+
+            </div>
+
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/style.css" rel="stylesheet">
+    <title>Document</title>
+    
+</head>
+
+<body>
+    <div id="container">
+        <%-include('./partials/menu.ejs')%>
+    </div>
+    <div id="all_itens">
+
+
+            <input type="text" name="search" id="inputBar" placeholder="Pesquisar por produto"  autocomplete="off">
+
+        <p id="products_count">Produtos cadastrados: <%=doc.length%></p>
+        <table border="1" align="right" id="table">
+            <tr>
+                <th id="th_nome">Nome</th>
+                <th id="th_marca">Marca</th>
+                <th id="th_cod_Ref">Cód. Referência</th>
+                <th id="th_preco_Venda">Preço de venda</th>
+                <th id="th_amount">Quantidade</th>
+                <th>Alterar</th>
+            </tr>
+            <% for(let i=0; i < doc.length; i++){%>
+                <tr id="<%=doc[i]._id%>" class="itens_list_all">
+                    <form method="POST" action="/all/<%=doc[i]._id%>?_method=DELETE">
+                        <td class="item_info">
+                            <%=doc[i].name%>
+                        </td>
+                        <td class="item_info">
+                            <%=doc[i].brand%>
+                        </td>
+                        <td class="item_info">
+                            <%=doc[i].refCode%>
+                        </td>
+                        <td class="item_info">
+                            R$ <%=doc[i].sellPrice%>,00
+                        </td>
+                        <td class="item_info">
+                            <%=doc[i].amount%>
+                        </td>
+                        <td class="item_info">
+                            <button class="delete"><img src="/image/DELETE.png" alt="editar" class="edit delete"></button>
+                                <a href="/edit/<%=doc[i]._id%>"><img src="/image/edit.png" alt="editar" class="edit"></a>
+                                </span>
+                        </td>
+
+                    </form>
+                </tr>
+                <%}%>
+
+        </table>
+    </div>
+    <script>
+        let btn = document.getElementById('searchBtn');
+        let input = document.getElementById('inputBar');
+        let table = document.querySelectorAll('td');
+        let tableArray = Array.from(table);
+        let toarray = Array.from(table);
+
+        function showItens(inputValue) {
+
+            toarray.filter(res => res.parentElement.textContent.toLowerCase().includes(input.value)).forEach(res => {
+                res.classList.remove('hidden')
+            })
+        };
+        function hiddenItens(inputValue) {
+            toarray.filter(res => !res.parentElement.textContent.toLowerCase().includes(inputValue)).forEach(res => {
+                res.classList.add('hidden')
+            })
+        };
+
+
+        input.addEventListener('input', () => hiddenItens(input.value))
+
+        input.addEventListener('input', () => showItens(input.value))  
+    </script>
+</body>
+
+</html>

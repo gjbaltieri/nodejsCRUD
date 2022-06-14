@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/style.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <%-include('./partials/menu.ejs')%>
+
+        
+            <div id="new_product">
+                <h2 id="new_product_title">Cadastrar novo Produto</h2>
+                
+                <form method="post" action="/cadastrar" id="new_product_form">
+                    <label for="name">Nome do produto
+                        <input type="text" name="name" required autocomplete="off">
+                    </label>
+                    <label for="brand">Marca
+                        <input type="text" name="brand" autocomplete="off">
+                    </label>
+                    <label for="refCode">Cód. de referência
+                        <input type="text" name="refCode" required autocomplete="off">
+                    </label>
+                    <label for="description">Descrição
+                        <input type="text" name="description" autocomplete="off">
+                    </label>
+                    <label for="amount">Quantidade
+                        <input type="number" name="amount" required autocomplete="off">
+                    </label>
+                    <label for="price">Preço
+                        <input type="number" name="price" required autocomplete="off">
+                    </label>
+                    <label for="sellPrice">Preço de venda
+                        <input type="number" name="sellPrice">
+                    </label>
+                    <button>Salvar</button>
+                </form>
+                    
+                    <%if(doc){%>
+                    <h4 id="new_product_create">
+                        <%=doc.name%> cadastrado com sucesso!
+                    </h4>
+                <%}%>
+                        
+            </div>
+
+</body>
+
+</html>
