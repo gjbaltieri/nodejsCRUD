@@ -8,7 +8,7 @@ const productRoute = require('./routes/painelRoute');
 // SERVER
 app.set('view engine', 'ejs');
 app.set('views', './frontend/views');
-app.listen(PORT, () => console.log('running in ' + PORT));
+app.listen(process.env.PORT || PORT, () => console.log('running in '));
 app.use(express.static('./frontend/public'))
 
 // MONGOSE
